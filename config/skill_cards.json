@@ -1,0 +1,49 @@
+[
+  {
+    "skill": "contract_drafting",
+    "status": "seed",
+    "default_executor": {
+      "role": "workflow_agent",
+      "temperature": 0.35
+    },
+    "verifier": {
+      "required": true,
+      "temperature": 0.0,
+      "checks": [
+        "required legal elements",
+        "jurisdiction caveats",
+        "must-fail conditions",
+        "residual risk statement"
+      ]
+    },
+    "promotion_gate": {
+      "min_acceptance_rate": 0.8,
+      "min_robustness": 0.8,
+      "min_verifiability": 0.75,
+      "max_cost_per_accepted_output": 0.02
+    }
+  },
+  {
+    "skill": "extraction",
+    "status": "seed",
+    "default_executor": {
+      "role": "workflow_agent",
+      "temperature": 0.0
+    },
+    "verifier": {
+      "required": true,
+      "temperature": 0.0,
+      "checks": [
+        "field recall",
+        "source traceability",
+        "no invented fields"
+      ]
+    },
+    "promotion_gate": {
+      "min_acceptance_rate": 0.9,
+      "min_robustness": 0.85,
+      "min_verifiability": 0.8,
+      "max_cost_per_accepted_output": 0.015
+    }
+  }
+]

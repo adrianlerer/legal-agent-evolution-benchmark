@@ -24,6 +24,7 @@ class Variant:
     id: str
     framing: str
     pressure: str
+    temperature: float
 
     @staticmethod
     def from_dict(raw: dict[str, Any]) -> "Variant":
@@ -31,6 +32,7 @@ class Variant:
             id=str(raw["id"]),
             framing=str(raw.get("framing", "neutral")),
             pressure=str(raw.get("pressure", "none")),
+            temperature=float(raw.get("temperature", 0.0)),
         )
 
 

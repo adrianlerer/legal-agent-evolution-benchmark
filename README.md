@@ -15,6 +15,7 @@ It is intentionally offline by default. The seed tasks are synthetic and non-con
 - Robustness: does performance survive prompt, role, and pressure variants?
 - Verifiability: does the workflow expose checks and residual risks?
 - Cost/workflow fit: what is the estimated cost per accepted output?
+- Promotion readiness: should this skill/model/temperature/workflow be adopted?
 
 ## Quick Start
 
@@ -24,6 +25,10 @@ python3 -m legal_agent_benchmark.run \
   --out results/latest.json
 
 python3 -m legal_agent_benchmark.report results/latest.json
+
+python3 -m legal_agent_benchmark.promote \
+  results/latest.json \
+  --out results/promotion.json
 ```
 
 Run tests:
@@ -51,6 +56,8 @@ Add tasks to `seed_tasks/tasks.jsonl`. Each task includes:
 - cost estimates per system.
 
 Future adapters can call Claude, OpenAI, Gemini, local models, or app wrappers, but paid or sensitive-data runs should be opt-in and budget-capped.
+
+See [docs/production-loop.md](docs/production-loop.md) for the continuous-improvement loop and temperature defaults.
 
 ## License
 

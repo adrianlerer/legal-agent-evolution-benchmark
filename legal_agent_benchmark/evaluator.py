@@ -11,6 +11,7 @@ class EvalResult:
     task_id: str
     family: str
     variant_id: str
+    temperature: float
     system: str
     reliability: float
     usefulness: float
@@ -42,6 +43,7 @@ def evaluate(task: Task, variant: Variant, output: SystemOutput) -> EvalResult:
         task_id=task.id,
         family=task.family,
         variant_id=variant.id,
+        temperature=variant.temperature,
         system=output.system,
         reliability=round(reliability, 4),
         usefulness=round(usefulness, 4),

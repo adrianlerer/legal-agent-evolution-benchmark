@@ -44,6 +44,7 @@ def summarize(results: list[dict]) -> dict:
             "runs": len(rows),
             "accepted": len(accepted),
             "acceptance_rate": round(len(accepted) / len(rows), 4) if rows else 0.0,
+            "robustness": robustness_score(rows),
             "avg_reliability": round(sum(row["reliability"] for row in rows) / len(rows), 4),
             "avg_usefulness": round(sum(row["usefulness"] for row in rows) / len(rows), 4),
             "avg_verifiability": round(sum(row["verifiability"] for row in rows) / len(rows), 4),
@@ -51,6 +52,20 @@ def summarize(results: list[dict]) -> dict:
             "cost_per_accepted_output": round(total_cost / len(accepted), 6) if accepted else None,
         }
     return summary
+
+
+def robustness_score(rows: list[dict]) -> float:
+    """Score stability across induction variants for each task."""
+    by_task: dict[str, list[dict]] = {}
+    for row in rows:
+        by_task.setdefault(row["task_id"], []).append(row)
+    if not by_task:
+        return 0.0
+    task_scores = []
+    for task_rows in by_task.values():
+        pass_values = [1.0 if row["passed"] else 0.0 for row in task_rows]
+        task_scores.append(1.0 if all(pass_values) else 0.0 if not any(pass_values) else 0.5)
+    return round(sum(task_scores) / len(task_scores), 4)
 
 
 def main() -> None:

@@ -13,6 +13,7 @@ def render(path: str) -> str:
         lines.append(f"- Runs: {stats['runs']}")
         lines.append(f"- Accepted: {stats['accepted']}")
         lines.append(f"- Acceptance rate: {stats['acceptance_rate']}")
+        lines.append(f"- Robustness: {stats['robustness']}")
         lines.append(f"- Avg reliability: {stats['avg_reliability']}")
         lines.append(f"- Avg usefulness: {stats['avg_usefulness']}")
         lines.append(f"- Avg verifiability: {stats['avg_verifiability']}")

@@ -1,0 +1,45 @@
+{
+  "thresholds": {
+    "min_acceptance_rate": 0.8,
+    "min_robustness": 0.8,
+    "min_verifiability": 0.75,
+    "max_cost_per_accepted_output": 0.02
+  },
+  "decisions": {
+    "bare_drafter": {
+      "decision": "reject",
+      "reasons": [
+        "acceptance_rate_below_threshold",
+        "robustness_below_threshold",
+        "verifiability_below_threshold",
+        "cost_per_accepted_output_above_threshold"
+      ],
+      "stats": {
+        "runs": 15,
+        "accepted": 0,
+        "acceptance_rate": 0.0,
+        "robustness": 0.0,
+        "avg_reliability": 0.0,
+        "avg_usefulness": 0.7,
+        "avg_verifiability": 0.0,
+        "total_estimated_cost": 0.0156,
+        "cost_per_accepted_output": null
+      }
+    },
+    "workflow_agent": {
+      "decision": "promote",
+      "reasons": [],
+      "stats": {
+        "runs": 15,
+        "accepted": 15,
+        "acceptance_rate": 1.0,
+        "robustness": 1.0,
+        "avg_reliability": 1.0,
+        "avg_usefulness": 0.95,
+        "avg_verifiability": 1.0,
+        "total_estimated_cost": 0.0555,
+        "cost_per_accepted_output": 0.0037
+      }
+    }
+  }
+}
