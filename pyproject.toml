@@ -1,0 +1,9 @@
+[project]
+name = "legal-agent-evolution-benchmark"
+version = "0.1.0"
+description = "Workflow-based legal AI benchmark harness"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+results/*.tmp
+results/local-*.json
+.DS_Store
